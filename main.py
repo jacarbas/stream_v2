@@ -155,7 +155,7 @@ elif option == 'Conclusions':
     st.write('All the data can be downloaded from my GitHub repository at https://github.com/jacarbas/jacarbas')
 
 elif option == 'Price predictor':
-    st.subheader('Select the car brand, model, year of production, fuel type, mileage, horsepower, country and region of trade.')
+    st.subheader('Select the car brand, model, year of production, fuel type, mileage, horsepower and country of trade.')
     
     brand = coches['Brand'].unique()
     brand = st.selectbox('Brand',(np.sort(brand)))
