@@ -181,7 +181,7 @@ elif option == 'Price predictor':
     country = st.selectbox('Country',(np.sort(country)))
     
     if st.button("Predict"):
-        model1 = pickle.load(open('xgbc.sav', 'rb'))
+        model1 = pickle.load(open('dec_tree.sav', 'rb'))
         
         df = pd.DataFrame({'Marca':[brand], 'Modelo':[model], 'Kms':[mileage], 
                            'Año':[year], 'Combustible':[fuel], 'Potencia':[horsepower], 'Pais':[country]})
