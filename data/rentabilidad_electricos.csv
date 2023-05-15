@@ -1,0 +1,8 @@
+,Brand,Model,Body,Fuel type,Kms,Horsepower,Year,average_price_ES,num_cars_spa,average_price_ger,num_cars_ger,average_profitability
+0,Audi,e-tron,SUV,electric,"(0, 15000)","(251, 400)","(2019, 2021)",63045,4,57774,7,5271
+1,Audi,e-tron,SUV,electric,"(0, 15000)","(401, 500)","(2019, 2021)",68700,2,64301,15,4398
+2,Audi,e-tron,SUV,electric,"(15000, 30000)","(251, 400)","(2019, 2021)",57233,3,56268,28,964
+3,Audi,e-tron,SUV,electric,"(15000, 30000)","(401, 500)","(2019, 2021)",67273,11,63283,31,3990
+4,Mercedes-Benz,EQC,SUV,electric,"(0, 15000)","(401, 500)","(2019, 2021)",71930,3,57784,6,14145
+5,Mercedes-Benz,EQC,SUV,electric,"(15000, 30000)","(401, 500)","(2019, 2021)",78400,2,58010,27,20389
+6,Mercedes-Benz,EQC,SUV,electric,"(30001, 60000)","(401, 500)","(2019, 2021)",67125,4,57443,25,9682
