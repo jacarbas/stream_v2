@@ -209,4 +209,4 @@ elif option == 'Price predictor':
         
         prediction = model1.predict(df2)
         st.subheader(int(prediction[0]))
-        st.image(r'images/lambo.png',width=600)
+      
