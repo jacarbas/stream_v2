@@ -9,14 +9,14 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder,StandardScaler
 from joblib import load
 
-coches = pd.read_csv(r'streamlit/data/coches_clean.csv', sep=',')
+coches = pd.read_csv(r'data/coches_clean.csv', sep=',')
 coches['Year'] = coches['Year'].astype('str')
 coches.drop(['Numeration'],axis=1, inplace = True)
 
-rentabilidad = pd.read_csv(r'streamlit/data/rentabilidad.csv', sep=',')
+rentabilidad = pd.read_csv(r'data/rentabilidad.csv', sep=',')
 rentabilidad.drop(['Unnamed: 0'],axis = 1, inplace = True)
 
-electricos = pd.read_csv(r'streamlit/data/rentabilidad_electricos.csv', sep=',')
+electricos = pd.read_csv(r'data/rentabilidad_electricos.csv', sep=',')
 electricos.drop(['Unnamed: 0'],axis = 1, inplace = True)
 electricos = electricos.sort_values(by=['average_profitability'], ascending = False)
 
@@ -46,7 +46,7 @@ option = st.sidebar.selectbox(
 
 if option == 'Data exploration':
     st.subheader('Author: Javier Carrascosa Basterra')
-    st.image(r'streamlit/images/Audi-BMW-Mercedes.jpg',width=600)
+    st.image(r'images/Audi-BMW-Mercedes.jpg',width=600)
     with st.expander('''Project's target''',expanded=True):
         st.write("""
         This project aims to analyze the profitability of importing various models of BMW, Audi, and Mercedes cars from Germany to Spain. 
@@ -86,7 +86,7 @@ if option == 'Data exploration':
     st.write('Upon analyzing the data, it is evident that the number of cars in Germany significantly exceeds the offer in Spain. Furthermore, the data shows that Audi, followed by Mercedes and BMW, are the most popular brands in both countries')
 
     st.subheader("Variables correlation")
-    st.image(r'streamlit/graphs/heatmap.png')
+    st.image(r'graphs/heatmap.png')
     st.write('From the graph it is appreciated that the horsepower has an important relevance in the price. More powerful models usually are more expensive. In addition we can see that newer models frequently have smaller mileage.')
     
     st.subheader('Data description')
@@ -105,10 +105,10 @@ if option == 'Data exploration':
 
 elif option == 'Analysis':
     st.subheader('Geospatial distribution of car advertisements and mean price of all data')
-    st.image(r"streamlit/maps/Distribucion anuncios coches germany.png")
+    st.image(r"maps/Distribucion anuncios coches germany.png")
     st.write('This map displays the average car prices and offer for cars in Germany, highlighting spatial variations across different regions. The map reveals that the west and south regions of Germany tend to have higher average car prices and offer compared to other regions. This pattern can be attributed to the concentration of car factories in these areas, which may drive up prices due to proximity to supply sources and increase availability of cars due to higher accessibility to dealerships and showrooms. The positive correlation between car prices and offer in these regions suggests that the high demand for cars in these areas can also contribute to the high prices. Overall, this map provides valuable insights into the spatial dynamics of the car market in Germany and can help inform strategic decisions for car importers and dealerships operating in the region.')
 
-    st.image(r"streamlit/maps/Distribucion anuncios coches spain.png")
+    st.image(r"maps/Distribucion anuncios coches spain.png")
     st.write('Map of average car prices and offer in Spain. High offer observed in Valencia, Barcelona, Madrid, and the Mediterranean coast. This region is well-known for being the place where foreign and national people go for retirement. Many of these are potential buyers of brand-used cars. Moreover, high demand in big metropolitan areas is appreciated.')
 
     #rsq3
@@ -118,10 +118,10 @@ elif option == 'Analysis':
                 Overall, this approach allows for a more detailed analysis of the car market and helps identify the most profitable cars to import from Germany to Spain.
                 ''')
     st.table(rentabilidad.head(8))
-    st.image(r'streamlit/graphs/profitability.png')
+    st.image(r'graphs/profitability.png')
     
     st.write('The data shows that the Audi Q3 in its RS version, with 400 horsepower, is the most profitable car to import, with an average difference of 10.000 euros aproximately between countries. However, the Mercedes GLC 350 diesel is an interesting option too, easier to sell due to a more affordable price for customers. ')
-    st.image(r'streamlit/images/rsq3.jpg', width=800)
+    st.image(r'images/rsq3.jpg', width=800)
 
     st.write('''However, what is the current status of electric cars? Are they considered to be the future of automobiles? Let's look at their profitability''')
     st.table(electricos)
@@ -130,11 +130,11 @@ elif option == 'Analysis':
     st.write('Given that we have established the Audi RSQ3 as the most financially lucrative car for importation, let us proceed to examine its geospatial dispersion and its prices for those cars with mileages between 15.000 and 60.000 kms and from the years 2019, 2020 and 2021.')
     
     #rsq3 germany
-    st.image(r"streamlit/maps/rsq3_germany.png")
+    st.image(r"maps/rsq3_germany.png")
     st.write('The german map illustrates that states with lower average prices, seen in the pevious map, typically offer the most affordable RSQ3 cars.')
 
     #rsq3 spain
-    st.image(r"streamlit/maps/rsq3_spain.png")
+    st.image(r"maps/rsq3_spain.png")
     st.write('The spanish map indicates that prices tend to be higher in provinces with major cities and higher incomes, such as Bizkaia, Madrid, Valencia, and Barcelona. Additionally, prices are also elevated in Malaga and Seville, which are popular tourist destinations.')
 
     st.write('Both countries exhibit significant regional variations. By purchasing in the least expensive regions of Germany and selling in the most costly areas of Spain, we can potentially maximize our profits to approximately 15.000 - 20.000 euros')
@@ -181,7 +181,7 @@ elif option == 'Price predictor':
     country = st.selectbox('Country',(np.sort(country)))
     
     if st.button("Predict"):
-        model1 = pickle.load(open('streamlit/etc.sav', 'rb'))
+        model1 = pickle.load(open('xgbc.sav', 'rb'))
         
         df = pd.DataFrame({'Marca':[brand], 'Modelo':[model], 'Kms':[mileage], 
                            'Año':[year], 'Combustible':[fuel], 'Potencia':[horsepower], 'Pais':[country]})
