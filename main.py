@@ -172,10 +172,13 @@ elif option == 'Price predictor':
     mileage = st.text_input('Mileage in kms')
     if mileage != '':
         mileage = int(mileage)
-
-    horsepower = st.text_input('Horsepower')
-    if horsepower != '':
-        horsepower = int(horsepower)
+    
+    horsepower = coches[(coches['Brand'] == brand) & (coches['Model'] == model) & (coches['Year'] == year) & (coches['Fuel type'] == fuel)]['Horspower'].unique()
+    horsepower = st.selectbox('Horsepower',(np.sort(horsepower)))
+    
+#     horsepower = st.text_input('Horsepower')
+#     if horsepower != '':
+#         horsepower = int(horsepower)
 
     country = coches['Country'].unique()
     country = st.selectbox('Country',(np.sort(country)))
