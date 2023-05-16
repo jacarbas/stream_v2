@@ -208,5 +208,5 @@ elif option == 'Price predictor':
         df2 = pd.DataFrame(data=df, columns=['Marca','Modelo','Kms','Año','Combustible','Potencia','Pais'])
         
         prediction = model1.predict(df2)
-        st.subheader(int(prediction[0])+'€')
+        st.subheader(int(prediction[0])'€')
       
